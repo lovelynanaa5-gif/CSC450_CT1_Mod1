@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 0, b = 0, c = 0;   // classic init, works everywhere
+
+    cout << "Enter first integer: ";
+    cin  >> a;
+    cout << "Enter second integer: ";
+    cin  >> b;
+    cout << "Enter third integer: ";
+    cin  >> c;
+
+    int* pA = new int(a);
+    int* pB = new int(b);
+    int* pC = new int(c);
+
+    cout << "\n--- Values in variables ---\n";
+    cout << "a = " << a << "  (address: " << &a << ")\n";
+    cout << "b = " << b << "  (address: " << &b << ")\n";
+    cout << "c = " << c << "  (address: " << &c << ")\n";
+
+    cout << "\n--- Values via pointers to dynamic memory ---\n";
+    cout << "pA points to address: " << static_cast<const void*>(pA)
+         << "  *pA = " << *pA << '\n';
+    cout << "pB points to address: " << static_cast<const void*>(pB)
+         << "  *pB = " << *pB << '\n';
+    cout << "pC points to address: " << static_cast<const void*>(pC)
+         << "  *pC = " << *pC << '\n';
+
+    delete pA;
+    delete pB;
+    delete pC;
+    pA = pB = pC = nullptr;
+
+    cout << "\nMemory has been released using delete, and pointers set to nullptr.\n";
+    return 0;
+}
